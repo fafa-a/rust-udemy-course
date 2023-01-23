@@ -29,10 +29,12 @@ pub fn hello() {
         height: 20.0,
     };
     let c = Circle { radius: 10.0 };
-    computed(r);
+    computed(r)
     computed(c);
 }
-
+// fn computed<T: Compute>(figure: T) {
+//    println!("{}", figure.area());
+//    }
 fn computed(figure: impl Compute) {
     println!("{}", figure.area());
 }
