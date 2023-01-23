@@ -1,4 +1,6 @@
-// mod mon_module;
+//use std::fs::File;
+#[path = "mon_module/generic.rs"]
+mod generic;
 // extern crate rand;
 // use rand::prelude::*;
 
@@ -49,15 +51,21 @@
 //     Contre(String),
 // }
 
-enum Option<T> {
-    Some(T),
-    None,
-}
+// enum Option<T> {
+//     Some(T),
+//     None,
+// }
+//
+// fn op(arg: u8) -> Option<u8> {
+//     Option::Some(arg)
+// }
+// enum Result<T, E> {
+//     Ok(T),
+//     Err(E),
+// }
 
-fn op(arg: u8) -> Option<u8> {
-    Option::Some(arg)
-}
 fn main() {
+    generic::hello();
     // u8 u16 u32 u64 u128
     // u = unsigned (entier positif)
     // i8 i16 i32 i64 i128
@@ -291,8 +299,17 @@ fn main() {
     // choisir(Choix::Pour);
     // choisir(Choix::Contre("LALA".to_owned()));
 
-    match op(85) {
-        Option::None => println!("Aucune valeur"),
-        Option::Some(x) => println!("Valeur : {}", x),
-    }
+    // match op(85) {
+    //     Option::None => println!("Aucune valeur"),
+    //     Option::Some(x) => println!("Valeur : {}", x),
+    // }
+
+    // let f = File::open("test.txt").unwrap();
+    // let f = File::open("test.txt").expect("Error opening file");
+    // let file = match f {
+    //     Ok(content) => content,
+    //     Err(error) => {
+    //         panic!("Error : {}", error);
+    //     }
+    // };
 }
