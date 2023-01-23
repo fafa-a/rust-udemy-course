@@ -1,9 +1,13 @@
+trait Compute {
+    fn area(&self) -> f32;
+}
+
 struct Rectangle {
     width: f32,
     height: f32,
 }
 
-impl Rectangle {
+impl Compute for Rectangle {
     fn area(&self) -> f32 {
         self.width * self.height
     }
@@ -13,7 +17,7 @@ struct Circle {
     radius: f32,
 }
 
-impl Circle {
+impl Compute for Circle {
     fn area(&self) -> f32 {
         &self.radius.powf(2.0) * std::f32::consts::PI
     }
@@ -25,10 +29,10 @@ pub fn hello() {
         height: 20.0,
     };
     let c = Circle { radius: 10.0 };
-    println!("r area = {}", r.area());
-    println!("c area = {}", c.area());
+    computed(r);
+    computed(c);
 }
 
-fn compute<T>(figure: T) {
+fn computed(figure: impl Compute) {
     println!("{}", figure.area());
 }
