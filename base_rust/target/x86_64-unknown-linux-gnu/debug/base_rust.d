@@ -1,0 +1,1 @@
+/home/fafa/code/rust-udemy-course/base_rust/target/x86_64-unknown-linux-gnu/debug/base_rust: /home/fafa/code/rust-udemy-course/base_rust/src/main.rs /home/fafa/code/rust-udemy-course/base_rust/src/mon_module/closure.rs
