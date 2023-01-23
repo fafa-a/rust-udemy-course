@@ -1,10 +1,8 @@
 pub fn hello() {
     let a = String::from("Hello");
-    let clos = || {
+    let clos = move || {
         println!("{}", a);
     };
     clos();
-    clos();
-    clos();
-    clos();
+    println!("{}", a);
 }
