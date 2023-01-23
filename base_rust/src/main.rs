@@ -1,8 +1,10 @@
 //use std::fs::File;
 // #[path = "mon_module/generic.rs"]
 // mod generic;
-#[path = "mon_module/traits.rs"]
-mod traits;
+//#[path = "mon_module/traits.rs"]
+//mod traits;
+#[path = "mon_module/lifetime.rs"]
+mod lifetime;
 // extern crate rand;
 // use rand::prelude::*;
 
@@ -67,7 +69,7 @@ mod traits;
 // }
 
 fn main() {
-    traits::hello();
+    lifetime::hello();
     // u8 u16 u32 u64 u128
     // u = unsigned (entier positif)
     // i8 i16 i32 i64 i128
