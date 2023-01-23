@@ -19,15 +19,15 @@ impl Area for Rectangle {
 
 impl Perimeter for Rectangle {
     fn perimeter(&self) -> f32 {
-        2.0 * (self.width + self.length)
+        2.0f32 * (self.width + self.length)
     }
 }
 
-impl Rectangle {
-    fn hello(&self) {
-        println!("Hello");
-    }
-}
+// impl Rectangle {
+//     fn hello(&self) {
+//         println!("Hello");
+//     }
+// }
 
 // struct Circle {
 //     radius: f32,
@@ -49,14 +49,20 @@ pub fn hello() {
         length: 30.0,
     };
 
-    computed(r);
+    computed(r, r2);
 }
 
 // fn computed<T: Area + Perimeter>(figure: T) {
 //    println!("{}", figure.area());
 //    }
 
-fn computed(figure: impl Area + Perimeter) {
-    println!("{}", figure.area());
-    print!("{}", figure.perimeter());
+// fn computed(figure: impl Area, figure2: impl Perimeter) {
+//fn computed<T: Area, U: Perimeter>(figure: T, figure2: U) {
+fn computed<T, U>(figure: T, figure2: U)
+where
+    T: Area,
+    U: Perimeter,
+{
+    println!("Area {}", figure.area());
+    println!("Perimeter {}", figure2.area());
 }
