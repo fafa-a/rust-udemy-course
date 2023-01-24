@@ -2,7 +2,7 @@ use std::thread;
 use std::time::Duration;
 
 pub fn hello() {
-    thread::spawn(|| {
+    let th = thread::spawn(|| {
         for i in 1..10 {
             println!("Hello from the spawned thread {}", i);
             thread::sleep(Duration::from_millis(1000))
@@ -12,4 +12,5 @@ pub fn hello() {
         println!("Hello from the main thread {}", i);
         thread::sleep(Duration::from_millis(600))
     }
+    th.join();
 }
