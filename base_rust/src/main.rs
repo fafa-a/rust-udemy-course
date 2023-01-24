@@ -7,8 +7,10 @@
 //mod lifetime;
 //#[path = "mon_module/closure.rs"]
 //mod closure;
-#[path = "mon_module/thread.rs"]
-mod thread_mod;
+//#[path = "mon_module/thread.rs"]
+//mod thread_mod;
+#[path = "mon_module/input.rs"]
+mod input;
 // extern crate rand;
 // use rand::prelude::*;
 
@@ -73,7 +75,7 @@ mod thread_mod;
 // }
 
 fn main() {
-    thread_mod::hello();
+    input::hello();
     // u8 u16 u32 u64 u128
     // u = unsigned (entier positif)
     // i8 i16 i32 i64 i128
