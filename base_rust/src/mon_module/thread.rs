@@ -1,28 +1,22 @@
-use std::sync::mpsc;
+use std::sync::{Arc, Mutex};
 use std::thread;
-use std::time::Duration;
 
 pub fn hello() {
-    let (sender, receiver) = mpsc::channel();
-    let sender2 = mpsc::Sender::clone(&sender);
+    let counter = Arc::new(Mutex::new(0));
+    let mut handles = vec![];
 
-    thread::spawn(move || {
-        for i in 1..10 {
-            sender.send(i).unwrap();
-            thread::sleep(Duration::from_millis(500));
-        }
-    });
-
-    thread::spawn(move || {
-        for i in 10..20 {
-            sender2.send(i).unwrap();
-            thread::sleep(Duration::from_millis(200));
-        }
-    });
-
-    for received in receiver {
-        println!("Received: {}", received);
+    for _ in 0..100 {
+        let count = Arc::clone(&counter);
+        let handle = thread::spawn(move || {
+            let mut num = count.lock().unwrap();
+            *num += 1;
+        });
+        handles.push(handle);
     }
 
-    println!("End");
+    for handle in handles {
+        handle.join().unwrap();
+    }
+
+    println!("Hello from the main thread! {}", *counter.lock().unwrap());
 }
